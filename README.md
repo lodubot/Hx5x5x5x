@@ -23,19 +23,19 @@ node example.js
 Use the stable version:
 
 ```
-npm install LevviCode Baileys
+npm install LevviCodeID/Baileys
 ```
 
 Use the edge version (no guarantee of stability, but latest fixes + features)
 
 ```
-npm install github:LevviCodeID/LevviCode Baileys
+npm install github:LevviCodeID/Baileys
 ```
 
 Then import your code using:
 
 ```js
-import makeWASocket from 'LevviCode Baileys'
+import makeWASocket from 'LevviCodeID/Baileys'
 ```
 
 # Links
@@ -60,7 +60,7 @@ WhatsApp provides a multi-device API that allows Baileys to be authenticated as 
 > You can customize browser name if you connect with **QR-CODE**, with `Browser` constant, we have some browsers config, **see [here](https://baileys.whiskeysockets.io/types/BrowsersMap.html)**
 
 ```js
-import makeWASocket from 'LevviCode Baileys'
+import makeWASocket from 'LevviCodeID/Baileys'
 
 const conn = makeWASocket({
     // can provide additional config here
@@ -79,7 +79,7 @@ If the connection is successful, you will see a QR code printed on your terminal
 The phone number can't have `+` or `()` or `-`, only numbers, you must provide country code
 
 ```js
-import makeWASocket from 'LevviCode Baileys'
+import makeWASocket from 'LevviCodeID/Baileys'
 
 const conn = makeWASocket({
     // can provide additional config here
@@ -157,7 +157,7 @@ You obviously don't want to keep scanning the QR code every time you want to con
 So, you can load the credentials to log back in:
 
 ```js
-import makeWASocket, { useMultiFileAuthState } from 'LevviCode Baileys'
+import makeWASocket, { useMultiFileAuthState } from 'LevviCodeID/Baileys'
 
 const { state, saveCreds } = await useMultiFileAuthState('auth_info_baileys')
 
@@ -198,7 +198,7 @@ conn.ev.on('messages.upsert', ({ messages }) => {
 > This example includes basic auth storage too
 
 ```js
-import makeWASocket, { DisconnectReason, useMultiFileAuthState } from 'LevviCode Baileys'
+import makeWASocket, { DisconnectReason, useMultiFileAuthState } from 'LevviCodeID/Baileys'
 import { Boom } from '@hapi/boom'
 
 async function connectToWhatsApp () {
@@ -246,10 +246,10 @@ connectToWhatsApp()
 
 ```js
 import pino from 'pino'
-import { makeInMemoryStore, getAggregateVotesInPollMessage } from 'LevviCode Baileys'
+import { makeInMemoryStore, getAggregateVotesInPollMessage } from 'LevviCodeID/Baileys'
 
 const logger = pino({ timestamp: () => `,"time":"${new Date().toJSON()}"` }).child({
-    class: 'LevviCode Baileys',
+    class: 'LevviCodeID/Baileys',
 })
 logger.level = 'fatal'
 const store = makeInMemoryStore({ logger })
@@ -260,7 +260,7 @@ async function getMessage(key) {
         return msg?.message
     }
     return {
-        conversation: 'LevviCode Baileys',
+        conversation: 'LevviCodeID/Baileys',
     }
 }
 
@@ -287,7 +287,7 @@ conn.ev.on('messages.update', async (chatUpdate) => {
 - By default event response are encrypted and handled in `messages.update`
 
 ```js
-import { jidNormalizedUser, getAggregateResponsesInEventMessage } from 'LevviCode Baileys'
+import { jidNormalizedUser, getAggregateResponsesInEventMessage } from 'LevviCodeID/Baileys'
 
 conn.ev.on('messages.update', async ([chatUpdate]) => {
     const eventResponses = chatUpdate.update?.eventResponses
@@ -314,7 +314,7 @@ conn.ev.on('messages.update', async ([chatUpdate]) => {
 It can be used as follows:
 
 ```js
-import makeWASocket, { makeInMemoryStore } from 'LevviCode Baileys'
+import makeWASocket, { makeInMemoryStore } from 'LevviCodeID/Baileys'
 // the store maintains the data of the WA connection in memory
 // can be written out to a file & read from it
 const store = makeInMemoryStore({})
@@ -1855,7 +1855,7 @@ await conn.sendMessage(
     {
         album: [{
         	image: {
-        		url: 'https://example.com/LevviCode Baileys.jpg'
+        		url: 'https://example.com/LevviCodeID/Baileys.jpg'
         	},
         	caption: 'Hay'
         }, {
@@ -1863,7 +1863,7 @@ await conn.sendMessage(
         	caption: 'Hay'
         }, {
         	video: {
-        		url: 'https://example.com/LevviCode Baileys.mp4'
+        		url: 'https://example.com/LevviCodeID/Baileys.mp4'
         	},
         	caption: 'Hay'
         }, {
@@ -1923,7 +1923,7 @@ If you want to save the media you received
 
 ```js
 import { createWriteStream } from 'fs'
-import { downloadMediaMessage, getContentType } from 'LevviCode Baileys'
+import { downloadMediaMessage, getContentType } from 'LevviCodeID/Baileys'
 
 conn.ev.on('messages.upsert', async ({ [m] }) => {
     if (!m.message) return // if there is no text or media message
